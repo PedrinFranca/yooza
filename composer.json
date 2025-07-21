@@ -1,0 +1,19 @@
+{
+    "name": "pedrinfranca/yooza",
+    "require": {
+        "php": ">= 8.2.12"
+    },
+    "authors": [
+        {
+            "name": "Pedro Lucas Gomes França",
+            "email": "pedrogomesfranca2008@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/",
+            "MF\\": "vendor/MF/"
+        }
+    }
+
+}
