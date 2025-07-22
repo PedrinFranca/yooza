@@ -16,6 +16,11 @@ class IndexController extends Action {
 		
 		$this->render('index');
 	}
+	public function create_account() {
+		$this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
+		
+		$this->render('create_account');
+	}
 
 	
 
