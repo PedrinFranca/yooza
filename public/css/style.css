@@ -1,0 +1,91 @@
+html, body {
+  height: 100%;
+}
+
+body {
+	font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #121212;
+}
+
+/*------------------ Global -----------------------*/
+.title-app {
+    line-height: 1em;
+    font-size: 2.5em;
+    color: #61ff32;
+}
+
+.input-custom-dark {
+    background: #121212;
+    border: #292929 1px solid;
+    color: white;
+}
+.input-custom-dark:focus {
+    background: #121212;
+    border: none;
+    color: white;
+}
+.button-custom-1 {
+    display: flex;
+    justify-content: center;
+    padding: .5em;
+    border-radius: 5px;
+    background-color: #1c8300;
+    color: white;
+}
+.button-custom-1:hover{
+    text-decoration: none;
+    background: #082400;
+    color: #ebebeb;
+} 
+
+/*--------------- Create Account ---------------------*/ 
+
+
+
+/*--------------- Create Account ---------------------*/ 
+
+form#form-create_account {
+    margin-top: 150px;
+    padding: 2em;
+    border: 1px solid #292929;
+}
+
+
+/*-------------------- Index -------------------------*/
+
+/*--------------- LEFT SIDE --------------------*/
+.left-side {
+    background-color: #121212;
+    font-size: 2.5em;
+    padding: 2.25em 0 5em 3em;
+    line-height: 1.5em;
+}
+
+.left-side div.title-register-app{
+    font-size: .5em;
+    padding: 0;
+    line-height: 1.2em;
+}
+    
+
+
+
+
+
+/*--------------- RIGHT SIDE -------------------*/
+.right-side {
+    background: #090909;
+    font-size: 1.5em;
+    padding: 1.5em;
+    line-height: 1.5em;
+}
+
+.right-side form {
+    border: 1px solid #292929;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+
+
+
