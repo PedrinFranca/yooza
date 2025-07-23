@@ -69,7 +69,10 @@ aside#menu_lateral-chat_list>div a:hover{
 /*--------------- Listas de chats ---------------*/
 #chat_list-chat_list {
     border-right: 3px solid #202020;
-    /* border-radius: 0 15px 15px 0; */
+    overflow-y: scroll;
+    scrollbar-width: none;
+    margin-right: 0px;
+    border-radius: 15px;
 }
 
 #chat_list-chat_list hr {
@@ -87,7 +90,7 @@ aside#menu_lateral-chat_list>div a:hover{
     background-image: url("/img/icon_search_user.png");
     background-repeat: no-repeat;
     background-position: 8px;
-    padding: 0 40px;
+    padding: 10px 10px 10px 40px;
     color: #8f8f8f;
     text-decoration: none;
     border-radius: 5px;
@@ -118,8 +121,21 @@ aside#menu_lateral-chat_list>div a:hover{
 }
 
 /*------------------- Chat ----------------------*/
+
 #chat-chat_list {
-    /* background: yellow; */
+    background: #171717;
+}
+#chat-chat_list>div.profile-top {
+    padding: 30px 0;
+    background: #121212;
+    border: 1px solid #292929;
+}
+
+.ball {
+    width: 50px;
+    height: 50px;
+    /* border-radius: 150px; */
+    background: white;
 }
 
 

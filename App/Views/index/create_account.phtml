@@ -3,30 +3,36 @@
 
         <div class="col-6 text-light">
             
-            <form action="" method="post" id="form-create_account" enctype="multipart/form-data">
+            <form action="/register" method="post" id="form-create_account" enctype="multipart/form-data">
                 <span class="h3 d-flex justify-content-center mb-5">Crie sua conta</span>
                 <div class="row justify-content-center">
-                    <!-- <div class="col-md-8 mb-4">
-                        <input type="text" class="form-control input-custom-dark" name="name" placeholder="Nome Completo: ">
-                    </div> -->
-
                     <div class="col-md-8 mb-4">
-                        <input type="text" class="form-control input-custom-dark" name="name" placeholder="Nome Completo: ">
+                        <input type="text" class="form-control input-custom-dark" name="name" value="<?=$this->view->usuario['name'] ?>" placeholder="Nome Completo: ">
                     </div>
                     <div class="col-md-8 mb-4">
-                        <input type="email" class="form-control input-custom-dark" name="email" placeholder="E-mail: ">
+                        <input type="email" class="form-control input-custom-dark" name="email" value="<?=$this->view->usuario['email'] ?>" placeholder="E-mail: ">
                     </div>
                     <hr class="bg-secondary col-md-6 mb-4">
                     <div class="col-md-8 mb-4">
-                        <input type="text" class="form-control input-custom-dark" name="username" placeholder="Nome do usuário: ">
+                        <input type="text" class="form-control input-custom-dark" name="username" value="<?=$this->view->usuario['username'] ?>" placeholder="Nome do usuário: ">
                     </div>
                     <div class="col-md-8 mb-4">
-                        <input type="password" class="form-control input-custom-dark" name="password" placeholder="Senha: ">
+                        <input type="password" class="form-control input-custom-dark" name="password" value="<?=$this->view->usuario['password'] ?>" placeholder="Senha: ">
                     </div>
                     <div class="col-md-8 mb-4">
                         <button type="submit" class="btn btn-block button-custom-1">Criar Conta</button>
                     </div>
-                    <div class="mt-5">
+                    <br>
+                    <?php if(isset($_GET['error']) && $_GET['error'] == "password"){ ?>
+                        <small class="col-12 row justify-content-center text-danger">Por favor digite a senha sem espaço.</small>
+                    <?php } else if(isset($_GET['error']) && $_GET['error'] == 'username'){ ?>
+                            <small class="col-12 row justify-content-center text-danger">Por favor digite o Nome do Usuário sem espaço.</small>
+                    <?php } else if(isset($_GET['error']) && $_GET['error'] == 'user_exist'){ ?>
+                            <small class="col-12 row justify-content-center text-danger">Email já cadastrado.</small>
+                    <?php } else if(isset($_GET['error']) && $_GET['error'] == 'username_exist'){ ?>
+                            <small class="col-12 row justify-content-center text-danger">Nome de Usuário já cadastrado.</small>
+                    <?php } ?>
+                    <div class="mt-4">
                         <small>Ao inscrever-se, você concorda com os Termos de Serviço e com as Políticas de Privacidade, incluindo o Uso de Cookies. Outras pessoas poderão encontrar você pelo e-mail ou número de telefone fornecido · Opções de Privacidade</small>
                     </div>
                 </div>

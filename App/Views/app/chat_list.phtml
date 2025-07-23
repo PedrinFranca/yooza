@@ -1,4 +1,4 @@
-<div class="container-fluid h-100 ">
+<div class="container-fluid h-100">
 	<div class="row h-100">
 
         <aside class="col-md-1 row justify-content-start h-100" id="menu_lateral-chat_list">
@@ -11,9 +11,16 @@
                     </a>
                 </div>
                 <div class="col-md-12 align-self-end row justify-content-center p-0">
-                    <a href="#">
-                        <i class="text-light fa-solid fa-gear fa-2x"></i>
-                    </a>
+                    <div class="col-md-12 row justify-content-center p-0 mt-3">
+                        <a href="/logoff">
+                            <i class="text-light fa-solid fa-arrow-right-from-bracket fa-2xl"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-12 row justify-content-center p-0 mt-3">
+                        <a href="#">
+                            <i class="text-light fa-solid fa-gear fa-2x"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -24,40 +31,34 @@
         <section class="col-md-3 row justify-content-center h-100" id="chat_list-chat_list">
             <div class="col-md-12 justify-content-center w-100">
                 <div class="row justify-content-center align-items-center mt-3">
-                    <div class="col-md-12 d-flex justify-content-center align-items-center p-5">
-                        <a href="#">
+                    <div class="col-md-12 d-flex justify-content-center align-items-center p-3">
+                        <a href="/chat_list?modal=search">
                             Pesquisar por um usuário
                         </a>
                     </div>
                 </div>
                 <hr class="col-10">
 
-                <!-- <div class="col-md-12 row justify-content-center"> -->
-                    <div class="col-md-12 mb-3">
-                        <div class="chat-card row justify-content-center">
-                            <div class="col-auto align-self-start">Pedro Lucas</div>
-                            <span class="">Ultima Mensagem</span>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="chat-card row justify-content-center">
-                            <div class="col-auto align-self-start">Pedro Lucas</div>
-                            <span class="">Ultima Mensagem</span>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mb-3">
-                        <div class="chat-card row justify-content-center">
-                            <div class="col-auto align-self-start">Pedro Lucas</div>
-                            <span class="">Ultima Mensagem</span>
-                        </div>
-                    </div>
-                    
-                <!-- </div> -->
+                
+
             </div>
         </section>
         <div class="col-md-8" id="chat-chat_list">
-            <!-- Chat -->
+            <!----- Chat ----->
             
+            <!-- Profile Top -->
+            <div class="row profile-top">
+                <!-- <div class="col-1 border"></div> -->
+                <div class="col-1 d-flex justify-content-center">
+                    <div class="ball"></div>
+                </div>
+            </div>
+
+            <?php if(isset($this->view->user_chat) && $this->view->user_chat != '') {?>
+
+                <!-- <h2>eae</h2> -->
+
+            <?php }?>
         </div>
 
     </div>

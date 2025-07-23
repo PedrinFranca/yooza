@@ -1,0 +1,40 @@
+
+.modal-custom div.modal-body {
+    scrollbar-width: none;
+}
+.modal-custom>div>div {
+    scrollbar-width: none;
+    background: #121212;
+    color: #ebebeb;
+    /* border-bottom: none; */
+}
+
+.modal-custom>div>div div.modal-header{
+    border-bottom: none;
+}
+
+.card-user-search {
+    border: 1px solid #292929;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin-bottom: 25px;
+    transition: all .3s ease;
+}
+
+.card-user-search:hover {
+    scale: 1.05;
+    background: #292929;
+    border: 1px solid #bdbdbd;
+    cursor: pointer;
+}
+
+ .card-user-search>div {
+    font-size: 1.2em;
+    font-weight: 100;
+}
+
+.card-user-search>div+div{
+    /* margin-top: 10px; */
+    font-size: .75em;
+    letter-spacing: .10em;
+ }

@@ -10,6 +10,11 @@ abstract class Action {
 		$this->view = new \stdClass();
 	}
 
+	protected function isAjax() {
+		return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+	}
+
+
 	protected function render($view, $layout = 'layout') {
 		$this->view->page = $view;
 
@@ -17,6 +22,14 @@ abstract class Action {
 			require_once "../App/Views/".$layout.".phtml";
 		} else {
 			$this->content();
+		}
+	}
+	
+	protected function renderModal($modal) {
+		$this->view->modal = $modal;
+
+		if(file_exists("../App/Views/modal/".$modal.".phtml")) {
+			require_once "../App/Views/modal/".$modal.".phtml";
 		}
 	}
 

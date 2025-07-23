@@ -18,10 +18,25 @@ class Route extends Bootstrap {
 			'controller' => 'indexController',
 			'action' => 'create_account'
 		);
+		$routes['register'] = array(
+			'route' => '/register',
+			'controller' => 'indexController',
+			'action' => 'register'
+		);
 		$routes['chat_list'] = array(
 			'route' => '/chat_list',
 			'controller' => 'AppController',
 			'action' => 'chat_list'
+		);
+		$routes['login'] = array(
+			'route' => '/login',
+			'controller' => 'AuthController',
+			'action' => 'login'
+		);
+		$routes['logoff'] = array(
+			'route' => '/logoff',
+			'controller' => 'AuthController',
+			'action' => 'logoff'
 		);
 		
 		$this->setRoutes($routes);

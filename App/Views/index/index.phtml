@@ -19,7 +19,7 @@
         <div class="col-md-6 right-side">
             <div class="row h-100 justify-content-center">
                 <div class="container">
-                    <form class="form-login" action="" method="post">
+                    <form class="form-login" action="/login" method="post">
                         <div class="">
                             <fieldset class="form-group row justify-content-around text-light">
                                 <legend class="d-flex justify-content-center">Login</legend>
@@ -35,6 +35,11 @@
                                 <div class="col-10 mt-5">
                                     <button type="submit" class="btn btn-block button-custom-1">Entrar</button>
                                 </div>
+                                <?php if($this->view->login == "error"){ ?>
+                                    <small class="text-danger h5 mt-4">Email ou senha inválido(s).</small>
+                                <?php } else if($this->view->login == "not_auth"){?>
+                                    <small class="text-danger h5 mt-4">Faça login primeiro.</small>
+                                <?php } ?>
                             </fieldset>
                         </div>
                     </form>
