@@ -38,14 +38,95 @@ body {
     color: #ebebeb;
 } 
 
-/*--------------- Create Account ---------------------*/ 
+/*--------------- Chat List ---------------------*/ 
 
+/*--------------- Menu Lateral ------------------*/
+/* #menu_lateral-chat_list {
+    border-right: 3px solid #202020;
+    border-radius: 0 15px 15px 0;
+} */
+
+aside#menu_lateral-chat_list>div {
+    border-right: 3px solid #202020;
+    border-radius: 0 10px 10px 0;
+}
+
+aside#menu_lateral-chat_list>div a{
+    /* box-sizing: border-box; */
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+aside#menu_lateral-chat_list>div a:hover{
+    background: #292929;
+    border-radius: 5px;
+    scale: 1.1;
+}
+
+
+
+/*--------------- Listas de chats ---------------*/
+#chat_list-chat_list {
+    border-right: 3px solid #202020;
+    /* border-radius: 0 15px 15px 0; */
+}
+
+#chat_list-chat_list hr {
+    background: #292929;
+    /* border-radius: 0 15px 15px 0; */
+}
+
+#chat_list-chat_list>div>div>div {
+    background: #171717;
+    color: #8f8f8f;
+    border-radius: 5px;
+}
+
+#chat_list-chat_list>div>div>div a{
+    background-image: url("/img/icon_search_user.png");
+    background-repeat: no-repeat;
+    background-position: 8px;
+    padding: 0 40px;
+    color: #8f8f8f;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.4s ease;
+}
+
+#chat_list-chat_list>div>div>div a:hover{
+    border: 1px solid #8f8f8f;
+    scale: 1.1;
+}
+
+.chat-card {
+    box-sizing: border-box;
+    padding: 0px 20px;
+    height: 10vh;
+    border: 1px solid #292929;
+    border-radius: 5px;
+    transition: all .4s ease;
+}
+.chat-card:hover {
+    scale: 1.1;
+}
+.chat-card>div{
+    font-size: 1.5em;
+}
+.chat-card>span{
+    font-size: .9em;
+}
+
+/*------------------- Chat ----------------------*/
+#chat-chat_list {
+    /* background: yellow; */
+}
 
 
 /*--------------- Create Account ---------------------*/ 
 
 form#form-create_account {
-    margin-top: 150px;
+    margin-top: 50px;
     padding: 2em;
     border: 1px solid #292929;
 }

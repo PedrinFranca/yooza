@@ -18,6 +18,11 @@ class Route extends Bootstrap {
 			'controller' => 'indexController',
 			'action' => 'create_account'
 		);
+		$routes['chat_list'] = array(
+			'route' => '/chat_list',
+			'controller' => 'AppController',
+			'action' => 'chat_list'
+		);
 		
 		$this->setRoutes($routes);
 	}
