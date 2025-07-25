@@ -91,8 +91,21 @@ function getNewRelations(){
 }
 
 
+let currentMessage = null;
+let current_id_message = null;
 
-
+function showCustomMenu(e, id_message, message) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const menu = document.getElementById('custom_menu_mouse');
+    menu.style.display = "block";
+    menu.style.left = e.pageX + 'px';
+    menu.style.top = e.pageY + 'px';
+    document.getElementById('id_message').value = id_message;
+    currentMessage = message;
+    current_id_message = id_message;
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -101,6 +114,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
     getNewMessages();
     setInterval(getNewMessages, 1000);
+
+
+    document.querySelector("div.input_chat>div>form").addEventListener('click', e => {
+        e.stopPropagation();
+    });
+
+    document.getElementById('editMessageLI').addEventListener("click", e => {
+        if (currentMessage !== null) {
+            console.log(currentMessage);
+            e.stopPropagation();
+
+            const form = document.querySelector('div.input_chat>div>form');
+
+            form.querySelector('input.chat-input').value = currentMessage;
+
+            if (!document.getElementById('input_id')) {
+                let input_id = document.createElement('input');
+                input_id.id = "input_id";
+                input_id.type = "hidden";
+                input_id.name = "id_message";
+                form.appendChild(input_id);
+            }
+
+            form.querySelector('input[type="hidden"][name="action"]').value = "edit";
+            form.querySelector('input[type="hidden"][name="id_message"]').value = current_id_message;
+            document.getElementById('custom_menu_mouse').style.display = 'none';
+        }
+    });
+
+    document.addEventListener('click', event => {
+        const inputId = document.getElementById('input_id');
+        if (inputId) {
+            document.querySelector('div.input_chat>div>form input.chat-input').value = "";
+            document.querySelector('div.input_chat>div>form input[type="hidden"][name="action"]').value = "send";
+            inputId.remove();
+        }
+
+        const idMessageField = document.getElementById('id_message');
+        if (idMessageField) {
+            idMessageField.value = "";
+        }
+
+        const menu = document.getElementById('custom_menu_mouse');
+        if (menu) {
+            menu.style.display = 'none';
+        }
+    });
+
+
 
     window.addEventListener("load", () => {
         let url = new URL(window.location);

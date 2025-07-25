@@ -38,11 +38,6 @@ class Route extends Bootstrap {
 			'controller' => 'AuthController',
 			'action' => 'logoff'
 		);
-		$routes['send_msg'] = array(
-			'route' => '/send_msg',
-			'controller' => 'AppController',
-			'action' => 'send_msg'
-		);
 		$routes['message'] = array(
 			'route' => '/message',
 			'controller' => 'MsgController',

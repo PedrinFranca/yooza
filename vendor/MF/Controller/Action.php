@@ -14,6 +14,13 @@ abstract class Action {
 		return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 	}
 
+	protected function validaAutenticacao(){
+		session_start();
+		if(!isset($_SESSION['id']) || $_SESSION['id'] == ''){
+			header('Location: /?login=not_auth');   
+		} 
+	}
+
 
 	protected function render($view, $layout = 'layout') {
 		$this->view->page = $view;

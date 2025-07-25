@@ -61,21 +61,10 @@ class AppController extends Action {
 						$echoTrash = "";
 						if($_SESSION['id'] == $message['from']) {
 							echo '
-								<div class="row justify-content-end align-items-center pl-5 pr-5 pt-2 pb-2">
+								<div class="row justify-content-end align-items-center pl-5 pr-5 pt-2 pb-2" oncontextmenu="showCustomMenu(event, '.$message['id'].', \''.$message['message'].'\')">
 
 									<div class="message-i col-5 w-auto">
 							';
-
-							$echoTrash = "
-								<span class=\"message-icon\">
-									<form action=\"/message\" method=\"POST\">
-										<input type=\"hidden\" name=\"action\" value=\"del\">
-										<input type=\"hidden\" name=\"id\" value=\"{$message['id']}\">
-										<input type=\"hidden\" name=\"id_to\" value=\"{$_GET['id_to']}\">
-										<i class=\"fa-solid fa-trash-can fa-lg\" onclick=\"this.closest('form').submit()\" style=\"cursor: pointer;\"></i>
-									</form>
-								</span>
-							";
 
 							
 						} else {
@@ -93,7 +82,6 @@ class AppController extends Action {
 											</p>
 										</div>
 										<div class=\"message-footer\">
-											{$echoTrash}
 											<span class=\"message-data align-self-end\">
 												{$message['data']}
 											</span>
@@ -124,7 +112,7 @@ class AppController extends Action {
 							";
 						}
 						echo "
-										<span class=\"col-8 d-flex justify-content-start\">". (strlen($relation['last_message']) >= 45 ? substr($relation['last_message'], 0, 45) .'...' : $relation['last_message']) ." </span>
+										<span class=\"col-8 d-flex justify-content-start\">". (strlen($relation['last_message']) >= 20 ? substr($relation['last_message'], 0, 20) .'...' : $relation['last_message']) ." </span>
 										<span class=\"col-4 d-flex justify-content-end\">".$relation['data_last_message']."</span>
 									</div>
 								</div>
@@ -158,7 +146,8 @@ class AppController extends Action {
 
 
 			$this->view->messages = $messages;
-			$this->view->user_chat = $user_chat[0];
+			
+			$this->view->user_chat = $user_chat[0]	?? "";
 
 
 		}
@@ -169,48 +158,6 @@ class AppController extends Action {
 			$this->renderModal('search');
 		}
 	}
-
-	public function send_msg(){
-		$this->validaAutenticacao();
-
-		$message = Container::getModel('Message');
-		$relation = Container::getModel('Relations');
-		$relation->__set('user1', $_SESSION['id']);
-		
-		$message->__set('from', $_SESSION['id']);
-		$message->__set('to', $_POST['id_to']);
-		$message->__set('type_msg', 1);
-		$message->__set('message', $_POST['msg']);
-		
-		$message->send_msg();
-		
-		$relation->__set('user1', $_SESSION['id']);
-		$relation->__set('user2', $_POST['id_to']);
-		$lastId = $relation->getRelationBy2()['id'] ?? "";
-		// echo "<pre>";
-		// print_r($relation->getRelationBy2() ?? "Nada");
-		// echo "</pre>";
-		if(!$relation->getRelationBy2()){
-			$lastId = $relation->createRelation();
-		}
-		$relation->__set('id', $lastId);
-		$relation->update_at();
-		header("Location: /chat_list?id_to=".$_POST['id_to']);
-
-		
-	}
-
-	
-
-	public function validaAutenticacao(){
-		session_start();
-
-		// if(!isset($_SESSION['id']) || $_SESSION['id'] == '' || !isset($_SESSION['name']) || $_SESSION['name'] == '' || !isset($_SESSION['username']) || $_SESSION['username'] == ''){
-		if(!isset($_SESSION['id']) || $_SESSION['id'] == ''){
-			header('Location: /?login=not_auth');   
-		} 
-	}
-
 	
 
 }

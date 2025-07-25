@@ -62,6 +62,17 @@
             return $this;
             
         }
+
+        public function edit_message() {
+            $query = "UPDATE `messages` SET message = ? WHERE id = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(1, $this->__get('message'));
+            $stmt->bindValue(2, $this->__get('id'));
+            $stmt->execute();
+
+            return $this;
+            
+        }
     }
 
 ?>

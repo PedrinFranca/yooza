@@ -81,8 +81,9 @@
                 <!-- Input Chat -->
                 <div class="row input_chat text-light ">
                     <div class="col-12">
-                        <form action="/send_msg" method="post" class="d-flex px-3 py-2 gap-2">
+                        <form action="/message" method="post" class="d-flex px-3 py-2 gap-2">
                             <input type="hidden" name="id_to" value="<?=$_GET['id_to'] ?? "" ?>">
+                            <input type="hidden" name="action" value="send">
                             <input type="text" name="msg" class="form-control input-custom-dark chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
                             <button type="submit" class="btn btn-custom">
                                 <i class="text-light fa-solid fa-paper-plane fa-xl"></i>
@@ -95,4 +96,20 @@
 
         </div>
     </div>
+</div>
+
+<div id="custom_menu_mouse">
+    <ul>
+        <li onclick="this.querySelector('form').submit()">
+            <form action="/message" method="POST">
+                <input type="hidden" name="action" value="del">
+                <input type="hidden" id="id_message" name="id" value="">
+                <input type="hidden" name="id_to" value="<?= $_GET['id_to']?>">
+                <span>Apagar</span>
+            </form>
+        </li>
+        <li id="editMessageLI">
+            <span>Editar</span>
+        </li>
+    </ul>
 </div>

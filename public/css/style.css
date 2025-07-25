@@ -236,6 +236,37 @@ aside#menu_lateral-chat_list>div a:hover{
   font-size: 1em;
 }
 
+/*----- Menu Custom Mouse --------*/
+div#custom_menu_mouse {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    background: #c6c6c6;
+    color: #121212;
+    border-radius: 5px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+div#custom_menu_mouse ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+}
+
+div#custom_menu_mouse ul li{
+    padding: 10px 35px;
+    align-self: center;
+    transition: all .1s ease;
+}
+
+div#custom_menu_mouse ul li:hover {
+    cursor: pointer;
+    border-radius: 5px;
+    background: #9c9c9c;
+}
+
+
 
 
 

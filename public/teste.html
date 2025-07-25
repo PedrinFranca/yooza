@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Personalizado</title>
+    <style>
+        .custom-menu {
+            position: absolute;
+            display: none;
+            background: white;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+            padding: 5px 0;
+            border-radius: 5px;
+        }
+
+        .custom-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .custom-menu li {
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+
+        .custom-menu li:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mensagem" oncontextmenu="showCustomMenu(event, this)">
+        Clique com o botão direito aqui
+    </div>
+
+    <div id="customMenu" class="custom-menu">
+        <ul>
+            <li onclick="alert('Apagar')">Apagar</li>
+            <li onclick="alert('Editar')">Editar</li>
+        </ul>
+    </div>
+
+    <script>
+        function showCustomMenu(event, element) {
+            event.preventDefault(); // impede o menu padrão
+            event.stopPropagation();
+            const menu = document.getElementById('customMenu');
+            menu.style.display = 'block';
+            menu.style.left = event.pageX + 'px';
+            menu.style.top = event.pageY + 'px';
+        }
+
+        // Ocultar menu ao clicar em qualquer lugar
+        document.addEventListener('click', function () {
+            document.getElementById('customMenu').style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
