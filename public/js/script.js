@@ -10,16 +10,106 @@ function openModal(id_modal) {
     });
 }
 
-function initRelation(id_to){
+function openChat(id_to){
     closeModal('searchModal');
     let url = new URL(window.location);
     url.search = "";
     url.searchParams.set('id_to', id_to);
     window.history.pushState({}, '', url);
+    location.reload();
+}
+
+function scrollToBottom() {
+    const messagesContainer = document.querySelector('div.messages');
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function scrollToBottomIfNearEnd() {
+    const messagesContainer = document.querySelector('div.messages');
+    
+    // Diferença pequena (ex: 100px) indica que o usuário está perto do fim
+    const nearBottom = messagesContainer.scrollHeight - messagesContainer.scrollTop - messagesContainer.clientHeight < 100;
+
+    if (nearBottom) {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
 }
 
 
+function getNewMessages(){
+    let url = new URL(window.location);
+    let id_to = url.searchParams.get('id_to');
+    let lastMessageHTML = '';
+
+    let urlXhr = `/chat_list?id_to=${id_to}`;
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', urlXhr, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let html = xhr.responseText;
+            if(html != lastMessageHTML){
+                document.querySelector('div.messages>div').innerHTML = xhr.responseText;
+                scrollToBottomIfNearEnd();
+                lastMessageHTML = html;
+            }
+        }
+    };
+    xhr.send('action=get_new_messages');
+    
+}
+
+function getNewRelations(){
+    let url = new URL(window.location);
+    let id_to = url.searchParams.get('id_to');
+    let lastRelationHTML = '';
+
+    let urlXhr = `/chat_list?id_to=${id_to}`;
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', urlXhr, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            let html = xhr.responseText;
+            
+            if(html != lastRelationHTML){
+                const hrElement = document.querySelector('section#chat_list-chat_list > div > hr');
+                document.querySelectorAll('section#chat_list-chat_list .mb-3').forEach(el => el.remove());
+                let tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                Array.from(tempDiv.querySelectorAll('.mb-3')).reverse().forEach(el => {
+                    hrElement.parentNode.insertBefore(el, hrElement.nextSibling);
+                });
+                lastRelationHTML = html;
+            }
+        }
+    };
+    xhr.send('action=get_new_relations');
+    
+}
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
+    getNewRelations();
+    setInterval(getNewRelations, 1000);
+
+    getNewMessages();
+    setInterval(getNewMessages, 1000);
+
+    window.addEventListener("load", () => {
+        let url = new URL(window.location);
+        if(url.searchParams.get('id_to')){
+            document.querySelector('input.chat-input')?.focus();
+            scrollToBottom();
+        }
+    });
+
 
     document.getElementById('inputSearchUser').addEventListener('input', event => {
         let value = event.target.value;
@@ -41,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById('result_search').innerHTML = xhr.responseText;
             }
         };
-        xhr.send(url.search.replace('?modal=search&', ''));
+        xhr.send(url.search.replace('?modal=search&', 'action=get_user_to_search&'));
         
 
     });

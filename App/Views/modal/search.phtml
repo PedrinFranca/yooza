@@ -7,25 +7,14 @@
                 </div>
                 <div class="col-6">
                     <form action="/chat_list?modal=search" method="get" class="form-row">
-                        <input type="text" name="username" class="form-control input-custom-dark" id="inputSearchUser">
+                        <input type="text" name="username" class="form-control input-custom-dark" id="inputSearchUser" autocomplete="off" placeholder="Nome de usuário">
                     </form>
                 </div>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row justify-content-center">
-                        <div class="col-md-5" id="result_search">
-
-                            <div class="card-user-search row justify-content-center" onclick="console.log('eae')">
-                                <div class="col-12 row justify-content-end">
-                                    João Paulo Gomes França
-                                </div>
-                                <div class="col-12 row justify-content-end">
-                                    joaop
-                                </div>
-                            </div>
-
-                        </div>
+                        <div class="col-md-5" id="result_search"></div>
                     </div>
                 </div>
             </div>

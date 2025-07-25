@@ -117,26 +117,126 @@ aside#menu_lateral-chat_list>div a:hover{
     font-size: 1.5em;
 }
 .chat-card>span{
-    font-size: .9em;
+    font-size: .6em;
+    align-self: center;
+}
+.chat-card>span+span{
+    font-size: .65em;
+    font-weight: bold;
+    align-self: center;
 }
 
 /*------------------- Chat ----------------------*/
-
+/*------- Profile Top ----------*/
 #chat-chat_list {
     background: #171717;
+    display: flex;
+    flex-direction: column;
 }
 #chat-chat_list>div.profile-top {
-    padding: 30px 0;
+    flex-shrink: 0;
+    padding: 15px 0;
     background: #121212;
     border: 1px solid #292929;
+}
+
+#chat-chat_list>div.profile-top div.col>div {
+    color: #ebebeb;
+    font-size: 1.5em;
+}
+#chat-chat_list>div.profile-top div.col>div+div {
+    color: #ebebeb;
+    font-size: .95em;
 }
 
 .ball {
     width: 50px;
     height: 50px;
-    /* border-radius: 150px; */
+    border-radius: 150px;
     background: white;
 }
+
+/*------- Messages ----------*/
+.messages {
+    display: grid;
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+
+.message-he, .message-i {
+    padding: 10px 20px 20px;
+    line-height: 1.4em;
+    font-size: .75em;
+}
+.message-i {
+    color: #fdfdfd;
+    background: #8a8a8a;
+    border-radius: 15px 15px 0px 15px;
+}
+
+.message-he {
+    background: #575757;
+    border-radius: 15px 15px 15px 0px;
+}
+
+.messages div.message-msg>p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.messages div.message-footer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    gap: 10px; 
+}
+
+.messages span.message-icon{
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5em;
+    padding: 5px;
+    transition: all .3s ease;
+    color: #DC3545;
+}
+
+.messages span.message-icon:hover {
+    background:  #404040;
+    color: white;
+    scale: 1.01;
+}
+
+.messages span.message-data {
+    margin-left: auto;
+    font-size: .85em;
+}
+
+/*------- Input Messages ----------*/
+
+.input_chat {
+    border: 1px solid #292929;    
+}
+
+.input_chat .btn-custom {
+    border: 2px solid #292929;
+    margin-left: 10px;
+}
+
+.input_chat .btn-custom:hover {
+    background: #404040;
+    scale: 1.1;
+}
+
+.chat-input {
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+
 
 
 /*--------------- Create Account ---------------------*/ 

@@ -6,7 +6,7 @@
 
             <div class="col-md-12 row justify-content-center h-100 pb-4 pt-4 pr-0">
                 <div class="col-md-12 align-self-start row justify-content-center p-0">
-                    <a href="#">
+                    <a href="/chat_list">
                         <i class="text-light fa-solid fa-comment-dots fa-2xl"></i>
                     </a>
                 </div>
@@ -16,7 +16,7 @@
                             <i class="text-light fa-solid fa-arrow-right-from-bracket fa-2xl"></i>
                         </a>
                     </div>
-                    <div class="col-md-12 row justify-content-center p-0 mt-3">
+                    <div class="col-md-12 align-self-end row justify-content-center p-0 mt-3">
                         <a href="#">
                             <i class="text-light fa-solid fa-gear fa-2x"></i>
                         </a>
@@ -41,25 +41,58 @@
 
                 
 
+                
+
+
             </div>
         </section>
-        <div class="col-md-8" id="chat-chat_list">
+        <div class="col-md-8 h-100" id="chat-chat_list">
             <!----- Chat ----->
-            
-            <!-- Profile Top -->
-            <div class="row profile-top">
-                <!-- <div class="col-1 border"></div> -->
-                <div class="col-1 d-flex justify-content-center">
-                    <div class="ball"></div>
-                </div>
-            </div>
-
             <?php if(isset($this->view->user_chat) && $this->view->user_chat != '') {?>
 
-                <!-- <h2>eae</h2> -->
 
+                <!-- Profile Top -->
+                <div class="row profile-top">
+                    <!-- <div class="col-1 border"></div> -->
+                    <div class="col-1 d-flex justify-content-center">
+                        <div class="ball"></div>
+                    </div>
+                    <div class="col justify-content-start align-items-center">
+                        <div class="row">
+                            <?=$this->view->user_chat['name']?>
+                        </div>
+                        <div class="row">
+                            <?=$this->view->user_chat['username']?>
+                        </div>
+                    </div>
+                </div>
+
+            
+                
+                <!-- Messages -->
+                <div class="row messages text-light">
+                    <div class="col-12">
+
+                        
+
+                    </div>
+                </div>
+
+                <!-- Input Chat -->
+                <div class="row input_chat text-light ">
+                    <div class="col-12">
+                        <form action="/send_msg" method="post" class="d-flex px-3 py-2 gap-2">
+                            <input type="hidden" name="id_to" value="<?=$_GET['id_to'] ?? "" ?>">
+                            <input type="text" name="msg" class="form-control input-custom-dark chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
+                            <button type="submit" class="btn btn-custom">
+                                <i class="text-light fa-solid fa-paper-plane fa-xl"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             <?php }?>
-        </div>
 
+
+        </div>
     </div>
 </div>
