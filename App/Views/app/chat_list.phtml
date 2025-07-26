@@ -1,10 +1,14 @@
 <div class="container-fluid h-100">
 	<div class="row h-100">
 
-        <aside class="col-md-1 row justify-content-start h-100" id="menu_lateral-chat_list">
-            <!-- Menu Lateral -->
+        
+        
+        <!-- Menu Lateral -->
+         
+         
+        <aside class="col-4 col-md-1 row justify-content-start h-100 <?= isset($_GET['id_to']) ? 'd-none d-md-flex': '' ?>" id="menu_lateral-chat_list">
 
-            <div class="col-md-12 row justify-content-center h-100 pb-4 pt-4 pr-0">
+            <div class="col-md-12 row justify-content-center h-100 pb-4 pt-4 pr-0" id="icons_menu_lateral">
                 <div class="col-md-12 align-self-start row justify-content-center p-0">
                     <a href="/chat_list">
                         <i class="text-light fa-solid fa-comment-dots fa-2xl"></i>
@@ -25,10 +29,37 @@
             </div>
             
         </aside>
+       
+
+        <!-- <aside class="d-flex flex-column justify-content-between align-items-center p-2" 
+            id="menu_lateral-chat_list"
+            style="width: 60px; height: 100vh; position: fixed; border-right: 3px solid #202020; border-radius: 0 10px 10px 0;">
+
+            
+            <div class="d-flex flex-column align-items-center mt-2">
+                <a href="/chat_list" class="nav-link p-2">
+                    <i class="text-light fa-solid fa-comment-dots fa-xl"></i>
+                </a>
+            </div>
+
+            
+            <div class="d-flex flex-column align-items-center mb-2">
+                <a href="/logoff" class="nav-link p-2 mb-3">
+                    <i class="text-light fa-solid fa-arrow-right-from-bracket fa-xl"></i>
+                </a>
+                <a href="#" class="nav-link p-2">
+                    <i class="text-light fa-solid fa-gear fa-xl"></i>
+                </a>
+            </div>
+
+        </aside> -->
 
 
 
-        <section class="col-md-3 row justify-content-center h-100" id="chat_list-chat_list">
+
+
+
+        <section class="col-8 col-md-3 row justify-content-center h-100 <?= isset($_GET['id_to']) ? 'd-none d-md-flex': '' ?>" id="chat_list-chat_list">
             <div class="col-md-12 justify-content-center w-100">
                 <div class="row justify-content-center align-items-center mt-3">
                     <div class="col-md-12 d-flex justify-content-center align-items-center p-3">
@@ -38,26 +69,27 @@
                     </div>
                 </div>
                 <hr class="col-10">
-
-                
-
-                
-
-
             </div>
         </section>
-        <div class="col-md-8 h-100" id="chat-chat_list">
+
+        <section class="col-12 col-md-8 h-100 <?= isset($_GET['id_to']) ? '': 'd-none d-md-flex' ?>" id="chat-chat_list">
             <!----- Chat ----->
             <?php if(isset($this->view->user_chat) && $this->view->user_chat != '') {?>
 
 
                 <!-- Profile Top -->
                 <div class="row profile-top">
-                    <!-- <div class="col-1 border"></div> -->
                     <div class="col-1 d-flex justify-content-center">
                         <div class="ball"></div>
                     </div>
-                    <div class="col justify-content-start align-items-center">
+                    <div class="col-1 d-flex d-md-none align-items-center justify-content-center">
+                        <a href="/chat_list" class="text-light">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </a>
+                    </div>
+                    <?php if(isset($_GET['id_to'])){?>
+                    <?php }?>
+                    <div class="col justify-content-end align-items-center">
                         <div class="row">
                             <?=$this->view->user_chat['name']?>
                         </div>
@@ -72,9 +104,6 @@
                 <!-- Messages -->
                 <div class="row messages text-light">
                     <div class="col-12">
-
-                        
-
                     </div>
                 </div>
 
@@ -94,7 +123,7 @@
             <?php }?>
 
 
-        </div>
+        </section>
     </div>
 </div>
 

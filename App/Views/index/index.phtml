@@ -1,12 +1,12 @@
 <div class="container-fluid h-100 ">
 	<div class="row h-100">
 
-        <div class="col-md-6 left-side">
+        <div class="col-md-6 left-side d-none d-md-block">
             <div class="row h-100 justify-content-center">
                 <div class="text-light title-init-app">
                     <p class="display-5">Converse com pessoas novas hoje mesmo com o <spam class="title-app">Yooza</spam></p>
                 </div>
-                <div class="text-light mt-5 title-register-app">
+                <div class="text-light mt-5 title-register-app d-none d-sm-block">
                     <p>Não conhece o <strong>Yooza</strong>? Crie uma conta e experimente agora!</p>
                     <span>
                         <a href="/create_account" class="btn btn-block button-custom-1">Criar Conta</a>
@@ -32,7 +32,12 @@
                                     <input type="password" class="form-control input-custom-dark" name="password" id="password_input" placeholder="Senha: ">
                                 </div>
 
-                                <div class="col-10 mt-5">
+                                <div class="col-10 mt-3">
+                                    <p>
+                                        Não conhece o <strong>Yooza?</strong> Crie uma <a href="/create_account">conta</a> e experimente agora!
+                                    </p>
+                                </div>
+                                <div class="col-10 mt-3">
                                     <button type="submit" class="btn btn-block button-custom-1">Entrar</button>
                                 </div>
                                 <?php if($this->view->login == "error"){ ?>

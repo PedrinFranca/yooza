@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(getNewMessages, 1000);
 
 
-    document.querySelector("div.input_chat>div>form").addEventListener('click', e => {
+    document.querySelector("div.input_chat>div>form")?.addEventListener('click', e => {
         e.stopPropagation();
     });
 
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    document.getElementById('inputSearchUser').addEventListener('input', event => {
+    document.getElementById('inputSearchUser')?.addEventListener('input', event => {
         let value = event.target.value;
         
         let url = new URL(window.location);
@@ -201,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let url = new URL(window.location.href);
 
+    
     if(url.searchParams.get("modal")){
         
         switch(url.searchParams.get("modal")){

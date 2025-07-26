@@ -46,6 +46,29 @@ body {
     border-radius: 0 15px 15px 0;
 } */
 
+/* aside#menu_lateral-chat_list>nav {
+    border-right: 3px solid #202020;
+    border-radius: 0 10px 10px 0;
+    
+}
+
+aside#menu_lateral-chat_list>nav ul{
+    padding: 30px 0 30px 0;
+}
+
+aside#menu_lateral-chat_list>nav li.align-self-start+li.align-self-end{
+    margin-top: 425px;
+}
+
+#menu_lateral-chat_list a {
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+#menu_lateral-chat_list a:hover {
+    background: #292929;
+    scale: 1.1;
+} */
+
 aside#menu_lateral-chat_list>div {
     border-right: 3px solid #202020;
     border-radius: 0 10px 10px 0;
@@ -64,7 +87,9 @@ aside#menu_lateral-chat_list>div a:hover{
     scale: 1.1;
 }
 
-
+@media (max-width: 767.98px) {
+    
+}
 
 /*--------------- Listas de chats ---------------*/
 #chat_list-chat_list {
@@ -127,14 +152,15 @@ aside#menu_lateral-chat_list>div a:hover{
 }
 
 /*------------------- Chat ----------------------*/
-/*------- Profile Top ----------*/
 #chat-chat_list {
     background: #171717;
     display: flex;
     flex-direction: column;
 }
+
+/*------- Profile Top ----------*/
 #chat-chat_list>div.profile-top {
-    flex-shrink: 0;
+    
     padding: 15px 0;
     background: #121212;
     border: 1px solid #292929;
@@ -296,10 +322,6 @@ form#form-create_account {
 }
     
 
-
-
-
-
 /*--------------- RIGHT SIDE -------------------*/
 .right-side {
     background: #090909;
@@ -313,6 +335,51 @@ form#form-create_account {
     padding: 40px;
     border-radius: 5px;
 }
+
+form>div>fieldset>div>p {
+    display: none;
+    gap: 4px; 
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: .6em;
+}
+form>div>fieldset>div>p a{
+    font-size: .9rem;
+}
+
+@media (max-width: 767.98px) {
+    form>div>fieldset>div>p {
+        display: flex;
+        font-size: .55em;
+        font-weight: 500;
+    }
+    form>div>fieldset>div>p a{
+        font-size: 1rem;
+    }
+}
+
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {}
+
+/* Extra extra large devices (very large desktops, 1400px and up) */
+@media (min-width: 1400px) {}
+
+
+
 
 
 
